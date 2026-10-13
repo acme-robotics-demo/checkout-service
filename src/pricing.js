@@ -17,8 +17,9 @@ export function discountCents(amountCents, discount) {
 // to the discounted amount.
 export function total(items, discount) {
   const sub = subtotal(items)
-  const tax = Math.round(sub * TAX_RATE)
-  return sub + tax - discountCents(sub, discount)
+  const discounted = sub - discountCents(sub, discount)
+  const tax = Math.round(discounted * TAX_RATE)
+  return discounted + tax
 }
 
 export function formatCents(cents) {
